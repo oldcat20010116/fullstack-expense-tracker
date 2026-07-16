@@ -52,10 +52,7 @@ This setup taught me that installing a program and making it available from the 
 
 - The Node.js runtime
 - CommonJS modules and `require`
-- The `path` module
-- The `url` module
-- The `fs` module
-- The `events` module
+- The `path`, `url`, `fs` and `events` modules
 - Creating an HTTP server without Express
 - Returning HTML and JSON responses
 - HTTP methods, routes and status codes
@@ -66,12 +63,7 @@ I created a Node.js module demonstration related to my expense tracker project. 
 
 I used the `fs` module to create a directory, write sample financial records to a text file and read the records back. I also created a custom `ExpenseEmitter` class using `EventEmitter`. It emits an event when a new expense is added.
 
-Next, I created an HTTP server from scratch using Node.js without Express. The server provides two GET routes:
-
-- `/` returns an HTML introduction page.
-- `/api/expenses` returns sample expense data in JSON format.
-
-Unknown routes return the HTTP status code 404.
+Next, I created an HTTP server from scratch using Node.js without Express. The server provides two GET routes. The `/` route returns an HTML introduction page, while `/api/expenses` returns sample expense data in JSON format. Unknown routes return HTTP status code 404.
 
 ### Challenges and solutions
 
@@ -83,10 +75,61 @@ Before this exercise, I mainly understood a server as a tool provided by a frame
 
 I also learned that JSON is a convenient format for transferring structured data between a back end and a front end. This will be important when the React client communicates with the Express API in my final MERN project.
 
+---
+
+## 3. MongoDB Fundamentals and CRUD
+
+**Date:** 16 July 2026
+
+### Topics studied
+
+- NoSQL and document databases
+- Databases, collections and BSON documents
+- Connecting MongoDB Compass to a local database server
+- Creating a database and collection
+- MongoDB Create, Read, Update and Delete operations
+- Filtering documents by field values
+- Using the `$set` update operator
+- Verifying database changes in MongoDB Compass
+
+### Work completed
+
+I connected MongoDB Compass to the local MongoDB server at `mongodb://localhost:27017`. I created the `expense_tracker_coursework` database and a `transactions` collection.
+
+I used the MongoDB shell included with Compass to insert three transaction documents with `insertMany()`. Each document contains a description, amount, transaction type, category, date and note. I used `find()` to display all transactions and filtered the results with `{ type: "expense" }`.
+
+For the Update operation, I used `updateOne()` and `$set` to change the Lunch amount from 12.50 to 15.50 and update its note. For the Delete operation, I used `deleteOne()` to remove the Bus ticket transaction. I refreshed the Documents view in Compass and confirmed that the updated Lunch transaction and Part-time salary remained.
+
+### Challenges and solutions
+
+MongoDB Community Server was installed successfully, but the standalone `mongosh` command was unavailable. MongoDB Compass could still connect to the database and included an `Open MongoDB shell` feature. I used this built-in shell instead of changing the installation or installing an unnecessary additional tool.
+
+### Reflection
+
+The exercise helped me understand that MongoDB stores JSON-like documents rather than rows in fixed relational tables. Documents in the same collection can be flexible, although consistent fields are still important for application code.
+
+CRUD operations form the basis of the final expense tracker. Adding a transaction corresponds to Create, showing transactions corresponds to Read, editing an incorrect amount corresponds to Update, and removing an unwanted record corresponds to Delete. Using Compass alongside shell commands was useful because I could connect the commands to visible changes in the database.
+
+I also learned that database tools have different roles: `mongod` runs the database server, MongoDB Compass provides a graphical interface, and the MongoDB shell executes database commands.
+
 ### Evidence
 
-- Node.js modules demonstration
-- File creation and reading
-- Custom expense event
-- Native HTTP server home page
-- JSON expense API
+- Local MongoDB connection in Compass
+- `expense_tracker_coursework` database and `transactions` collection
+- Three inserted transaction documents
+- Filtered expense query
+- Updated Lunch transaction
+- Deleted Bus ticket transaction
+- Final two-document result in Compass
+
+---
+
+## Current Progress
+
+- [x] Development environment and Git
+- [x] Node.js fundamentals
+- [x] MongoDB fundamentals and CRUD
+- [ ] Express.js
+- [ ] React
+- [ ] MERN integration
+- [ ] Final testing and demonstration video
