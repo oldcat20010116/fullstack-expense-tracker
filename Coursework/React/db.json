@@ -1,0 +1,26 @@
+{
+  "transactions": [
+    {
+      "id": "1",
+      "description": "Part-time salary",
+      "amount": 1200,
+      "type": "income",
+      "category": "Salary"
+    },
+    {
+      "id": "2",
+      "description": "Lunch",
+      "amount": 15.5,
+      "type": "expense",
+      "category": "Food"
+    },
+    {
+      "id": "3",
+      "description": "Programming book",
+      "amount": 29.9,
+      "type": "expense",
+      "category": "Education"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

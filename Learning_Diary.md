@@ -180,12 +180,65 @@ The in-memory transaction array resets whenever the server restarts. This demons
 
 ---
 
+## 5. React Fundamentals, Routing and JSON Server
+
+**Date:** 16 July 2026
+
+### Topics studied
+
+- Creating a React project with Vite
+- JSX and reusable components
+- Passing data and callbacks through props
+- Managing state with `useState`
+- Performing side effects with `useEffect`
+- Controlled form inputs and event handlers
+- Rendering lists with stable keys
+- Conditional rendering and filtering
+- Client-side routing with React Router
+- Reading and changing REST API data with `fetch()`
+- Using JSON Server as a development API
+
+### Work completed
+
+I created a Vite project with React 19 and divided the interface into `Summary`, `TransactionForm`, `TransactionList` and `About` components. The design presents total income, total expenses, the current balance, an input form and a filterable transaction list.
+
+The main component owns the transaction state and passes data and callback functions to child components through props. Adding or deleting a transaction updates the state and automatically recalculates the summary values. The form uses controlled inputs and prevents invalid descriptions or non-positive amounts.
+
+I added React Router with separate Tracker and About routes. Navigation changes the displayed component and URL without a full page reload.
+
+The first version stored transactions in localStorage with `useEffect`. I then installed JSON Server and created a `db.json` file. I updated the React application to fetch transactions from `http://localhost:3001/transactions`. The form sends a POST request and the Delete button sends a DELETE request. I verified both operations by refreshing the JSON API directly in the browser.
+
+### Challenges and solutions
+
+Vite requested a valid npm package name because the `React` directory contained an uppercase letter. I used `react-coursework` as the lowercase package name while keeping the coursework directory name unchanged.
+
+The React development server and JSON Server both need to run continuously. I used separate terminals and different ports: 5173 for Vite and 3001 for JSON Server. This made the separation between the front-end application and the REST API clear.
+
+### Reflection
+
+React components make it easier to divide an interface into focused and reusable pieces. State describes changing application data, while props connect parent and child components. I found that updating state immutably with `map`, `filter` and spread syntax creates predictable UI updates.
+
+The JSON Server exercise demonstrated asynchronous client-server communication. The browser interface does not directly change the database file. It sends an HTTP request, waits for the response and then updates the visible state. This prepares the same React interface to communicate with the Express and MongoDB back end in the final MERN project.
+
+### Evidence
+
+- Vite and React project setup
+- Interactive expense tracker interface
+- State and calculated financial totals
+- Transaction filtering and form validation
+- React Router About page
+- JSON Server API
+- React POST request and persistent API result
+- React DELETE request and API verification
+
+---
+
 ## Current Progress
 
 - [x] Development environment and Git
 - [x] Node.js fundamentals
 - [x] MongoDB fundamentals and CRUD
 - [x] Express.js
-- [ ] React
+- [x] React
 - [ ] MERN integration
 - [ ] Final testing and demonstration video
