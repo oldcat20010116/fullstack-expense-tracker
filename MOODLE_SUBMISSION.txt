@@ -7,5 +7,4 @@ Public GitHub repository:
 https://github.com/oldcat20010116/fullstack-expense-tracker
 
 Project demonstration video:
-TO BE ADDED AFTER RECORDING
-
+https://youtu.be/1EHDltufyHc

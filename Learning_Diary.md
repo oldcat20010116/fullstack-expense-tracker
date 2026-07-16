@@ -309,4 +309,5 @@ If I continue the project, I would add authentication, per-user records, monthly
 - [x] React
 - [x] MERN integration
 - [x] Final testing and production build
-- [ ] Demonstration video and final Moodle submission
+- [x] Demonstration video recorded and linked
+- [ ] Final Moodle submission and grading request

@@ -7,7 +7,6 @@
 
 ## Video Link
 
-YouTube: **TO BE ADDED AFTER RECORDING**
+YouTube: <https://youtu.be/1EHDltufyHc>
 
 The video demonstrates the MERN application running, including MongoDB persistence and the Create, Read, Update and Delete features.
-
