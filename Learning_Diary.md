@@ -124,12 +124,68 @@ I also learned that database tools have different roles: `mongod` runs the datab
 
 ---
 
+## 4. Express.js and REST API
+
+**Date:** 16 July 2026
+
+### Topics studied
+
+- Installing Express and third-party npm packages
+- Express applications and middleware
+- REST API route design
+- Route parameters and query strings
+- GET, POST, PUT and DELETE methods
+- Parsing JSON request bodies
+- HTTP response status codes
+- Input validation with `express-validator`
+- 404 and error-handling middleware
+
+### Work completed
+
+I created a separate Express.js coursework application for the Personal Expense Tracker. The API initially uses an in-memory array so that I could concentrate on Express routing before integrating MongoDB.
+
+The API implements routes for listing every transaction, retrieving a transaction by ID, creating a transaction, replacing an existing transaction and deleting a transaction. I also added a query string filter so that `/api/transactions?type=expense` returns only expense records.
+
+I tested GET routes in the browser and used PowerShell `Invoke-RestMethod` to send POST, PUT and DELETE requests. A Programming book transaction was created, updated to a Full-Stack programming book and retained in the final result. The Bus ticket transaction was removed with a DELETE request.
+
+The course material referred to the legacy `app.use(expressValidator())` syntax. The installed `express-validator` version uses validation chains as route middleware instead. I validated the description, amount, type, category and date fields and used `validationResult()` to return structured validation errors.
+
+I also created middleware for unknown routes and tested a missing transaction ID. Both situations return status code 404 with a meaningful JSON message.
+
+### Challenges and solutions
+
+The tutorial validation example was based on an outdated API. Instead of installing an obsolete package version, I checked the current approach and used `body()`, `param()` and `validationResult()`. This preserved the learning objective while keeping the code compatible with the installed packages.
+
+The running Express server occupied the first terminal. I opened a second terminal to send requests while the server continued listening on port 4000. This helped me understand that the server and the API client are separate processes.
+
+### Reflection
+
+Express reduced much of the manual work required by the native Node.js HTTP server. Routes can be associated directly with methods and URL patterns, JSON bodies can be parsed by middleware and responses can be sent with appropriate status codes.
+
+I learned that a successful API is more than a collection of CRUD routes. It must validate incoming data, return consistent JSON, distinguish client errors from server errors and respond clearly when a resource or route does not exist.
+
+The in-memory transaction array resets whenever the server restarts. This demonstrates why the final MERN application must connect Express to MongoDB for persistent storage.
+
+### Evidence
+
+- Express.js and express-validator installation
+- API endpoint overview
+- GET all transactions and query filtering
+- POST transaction creation
+- PUT transaction update
+- DELETE transaction removal
+- Input validation errors
+- Unknown-route middleware
+- Missing-transaction response
+
+---
+
 ## Current Progress
 
 - [x] Development environment and Git
 - [x] Node.js fundamentals
 - [x] MongoDB fundamentals and CRUD
-- [ ] Express.js
+- [x] Express.js
 - [ ] React
 - [ ] MERN integration
 - [ ] Final testing and demonstration video
