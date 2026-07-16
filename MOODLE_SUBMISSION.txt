@@ -1,0 +1,11 @@
+CT70A9140 Software Development Skills: Full-Stack 2025-26
+
+Student: Yu-Chi Huang
+Student number: 3775879
+
+Public GitHub repository:
+https://github.com/oldcat20010116/fullstack-expense-tracker
+
+Project demonstration video:
+TO BE ADDED AFTER RECORDING
+

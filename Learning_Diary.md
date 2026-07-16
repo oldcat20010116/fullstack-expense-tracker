@@ -233,6 +233,73 @@ The JSON Server exercise demonstrated asynchronous client-server communication. 
 
 ---
 
+## 6. Final MERN Project Integration
+
+**Date:** 16 July 2026
+
+### Topics studied
+
+- Organizing a full-stack project into frontend and backend applications
+- Connecting Express to MongoDB with Mongoose
+- Designing a Mongoose schema and model
+- Separating routes, controllers, middleware and configuration
+- Using environment variables with dotenv and Vite
+- Enabling cross-origin requests with CORS
+- Connecting React to a custom Express REST API
+- Persistent Create, Read, Update and Delete operations
+- Loading, success, validation and error states
+- Production linting and building
+
+### Work completed
+
+I created the final project in separate `Project/backend` and `Project/frontend` directories. The backend uses Express, Mongoose, CORS, dotenv and express-validator. I organized the code into configuration, model, controller, route and middleware modules instead of placing the complete server in one file.
+
+The `Transaction` model defines the description, amount, type, category, date and optional note. Mongoose also records `createdAt` and `updatedAt` timestamps. The API provides health, list, detail, create, update and delete endpoints.
+
+I configured the backend to connect to the local `expense_tracker_project` MongoDB database. I created three initial transaction records through the Express API and verified them in MongoDB Compass.
+
+For the final frontend, I created a new Vite and React application. API requests are separated in `src/api/transactions.js`. The frontend loads the MongoDB records, displays financial totals and supports adding, editing, deleting and filtering records. Success and error messages explain whether the database operation completed.
+
+I tested a complete persistent CRUD sequence. A Grocery shopping expense was created through React, remained after refreshing, was updated from 42.30 to 45.00 and was verified in Compass. It was then deleted through React and did not return after refreshing.
+
+Finally, I ran ESLint and created a successful Vite production build.
+
+### Challenges and solutions
+
+The current React ESLint rules detected synchronous state updates associated with Effects. I changed the API-loading Effect so that state is updated in asynchronous Promise callbacks. For the editing form, I used a React `key` to recreate the component when the selected transaction changes. The revised code passed lint and preserved the intended behaviour.
+
+The application requires MongoDB, the backend and the frontend to run at the same time. I used ports 27017, 5000 and 5173 and kept each service in a separate terminal. Health and transaction endpoints helped me verify the backend independently from the interface.
+
+### Reflection
+
+The final integration made the purpose of each MERN technology much clearer. React should not know how MongoDB stores a document. It only communicates with the Express API. Express should not manage visual state; it validates requests and coordinates database operations. Mongoose translates between JavaScript objects and MongoDB documents.
+
+I also learned the importance of separating configuration from code. `.env.example` makes the required settings visible, while `.env` keeps machine-specific or sensitive values out of Git.
+
+Seeing the same change in React, the API response and MongoDB Compass confirmed the complete data flow. This was the most important learning outcome of the project because it connected the independent course modules into one functioning system.
+
+### Evidence
+
+- Mongoose connection to `expense_tracker_project`
+- Backend health and transaction endpoints
+- MongoDB documents created through Express
+- Final React MERN interface
+- Persistent Create, Read, Update and Delete tests
+- Updated document verified in MongoDB Compass
+- Successful ESLint and production build
+
+---
+
+## 7. Overall Reflection
+
+The course progressed from individual Node.js modules to a complete full-stack application. Building an HTTP server without Express helped me understand what the framework later simplified. MongoDB CRUD exercises established how document data is stored and changed. Express introduced route and middleware design, while React introduced component-based user interfaces and state management.
+
+The most valuable aspect was solving compatibility and environment problems rather than only copying tutorial code. I handled a PowerShell execution restriction, a missing MongoDB PATH entry, outdated validation syntax and new React lint rules. These experiences made me more confident in reading errors, checking documentation and selecting an appropriate solution.
+
+If I continue the project, I would add authentication, per-user records, monthly budgets, charts, automated API tests and cloud deployment. The current version nevertheless meets the main goal: it is a clean and functional MERN-stack project that demonstrates my full-stack development skills.
+
+---
+
 ## Current Progress
 
 - [x] Development environment and Git
@@ -240,5 +307,6 @@ The JSON Server exercise demonstrated asynchronous client-server communication. 
 - [x] MongoDB fundamentals and CRUD
 - [x] Express.js
 - [x] React
-- [ ] MERN integration
-- [ ] Final testing and demonstration video
+- [x] MERN integration
+- [x] Final testing and production build
+- [ ] Demonstration video and final Moodle submission

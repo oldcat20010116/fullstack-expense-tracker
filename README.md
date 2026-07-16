@@ -1,6 +1,8 @@
-# Personal Expense Tracker
+# Personal Expense Tracker — MERN Stack
 
-A full-stack personal finance application created for **CT70A9140 Software Development Skills: Full-Stack 2025-26**. The application uses the MERN stack to help users record, manage and review their income and expenses.
+![Final MERN application](Evidence/06_MERN_Project/47_Final_MERN_Application.png)
+
+A full-stack personal finance application created for **CT70A9140 Software Development Skills: Full-Stack 2025-26**. The application allows users to create, view, edit, delete and filter income and expense records. Financial totals update automatically, and every transaction is stored persistently in MongoDB.
 
 ## Student Information
 
@@ -8,34 +10,57 @@ A full-stack personal finance application created for **CT70A9140 Software Devel
 - **Student number:** 3775879
 - **Course:** CT70A9140 Software Development Skills: Full-Stack 2025-26
 
-## Project Overview
+## Main Features
 
-The Personal Expense Tracker allows users to manage financial transactions through a simple web interface. The final application will connect a React front end to an Express and Node.js REST API, with MongoDB used for persistent data storage.
-
-The project differs from the course tutorial examples because it applies the MERN concepts to personal financial management and includes transaction summaries and filtering features.
-
-## Planned Features
-
-- Add income and expense records
-- Display all transactions
+- Create income and expense transactions
+- Display transactions stored in MongoDB
 - Edit existing transactions
-- Delete transactions
-- Calculate total income
-- Calculate total expenses
-- Calculate the current balance
-- Filter transactions by type and category
-- Validate user input and display error messages
-- Store data persistently in MongoDB
+- Permanently delete transactions
+- Filter records by income or expense
+- Calculate total income, total expenses and current balance
+- Validate data in both the React form and Express API
+- Display loading, success and error states
+- Navigate between Tracker and About pages with React Router
+- Responsive layout for desktop and smaller screens
+
+## MERN Architecture
+
+```text
+React frontend (port 5173)
+        │ HTTP / JSON
+        ▼
+Express + Node.js API (port 5000)
+        │ Mongoose
+        ▼
+MongoDB (port 27017)
+```
 
 ## Technologies
 
-- **MongoDB:** Database for transaction records
-- **Express.js:** REST API and server-side routing
-- **React:** User interface and application state
-- **Node.js:** Back-end JavaScript runtime
-- **Mongoose:** MongoDB object modelling
-- **CSS:** Responsive interface styling
-- **Git and GitHub:** Version control and coursework submission
+### Frontend
+
+- React 19
+- Vite 8
+- React Router
+- JavaScript and CSS
+- Fetch API
+
+### Backend
+
+- Node.js
+- Express 5
+- Mongoose 9
+- express-validator
+- CORS
+- dotenv
+- Nodemon
+
+### Database and development tools
+
+- MongoDB Community Server
+- MongoDB Compass
+- Git and GitHub
+- Visual Studio Code
 
 ## Repository Structure
 
@@ -46,85 +71,183 @@ fullstack-expense-tracker/
 │   ├── MongoDB/
 │   ├── ExpressJS/
 │   └── React/
+├── Evidence/
+│   ├── 01_Environment_and_Git/
+│   ├── 02_NodeJS/
+│   ├── 03_MongoDB/
+│   ├── 04_ExpressJS/
+│   ├── 05_React/
+│   └── 06_MERN_Project/
 ├── Project/
 │   ├── backend/
+│   │   ├── config/
+│   │   ├── controllers/
+│   │   ├── middleware/
+│   │   ├── models/
+│   │   ├── routes/
+│   │   ├── .env.example
+│   │   └── server.js
 │   └── frontend/
+│       ├── src/
+│       │   ├── api/
+│       │   └── components/
+│       └── .env.example
 ├── Learning_Diary.md
-├── README.md
-└── VIDEO_LINK.md
+├── PROJECT_REPORT.md
+├── VIDEO_LINK.md
+└── README.md
 ```
 
-`Coursework` contains exercises completed while following the course material. `Project` contains the final Personal Expense Tracker application.
+## Requirements
 
-## Completed Coursework
+Install the following before running the project:
 
-### Development environment
-
-- Verified Node.js, npm, Git and Visual Studio Code
-- Installed MongoDB Community Server 8.3.4
-- Configured MongoDB as a Windows Service
-- Added MongoDB to the Windows PATH
-- Created and cloned a public GitHub repository
-
-### Node.js
-
-- Used the `path`, `url`, `fs` and `events` modules
-- Created and read an expense data file
-- Created a custom expense event with `EventEmitter`
-- Built an HTTP server from scratch without Express
-- Returned an HTML page from the server
-- Created a JSON expense API endpoint
-- Handled an unknown route with HTTP status code 404
-
-## Current Project Status
-
-The development environment and Node.js coursework are complete. MongoDB, Express.js, React and the final MERN application will be added during the following stages of the course.
-
-## Running the Node.js Coursework
-
-### Requirements
-
-- Node.js 24 or a compatible recent version
+- Node.js 20 or newer
 - npm
+- MongoDB Community Server
+- Git
 
-### Modules demonstration
+MongoDB must be running locally as a Windows Service or through another local MongoDB process.
 
-From the repository root, run:
+## Installation
 
-```bash
-cd Coursework/NodeJS
-node modules-demo.js
-```
-
-The program demonstrates Node.js modules and creates `data/expenses.txt`.
-
-### Native HTTP server
-
-From `Coursework/NodeJS`, run:
+### 1. Clone the repository
 
 ```bash
-node server.js
+git clone https://github.com/oldcat20010116/fullstack-expense-tracker.git
+cd fullstack-expense-tracker
 ```
 
-Open these addresses in a browser:
+### 2. Configure and install the backend
 
-- Home page: <http://localhost:3000>
-- JSON API: <http://localhost:3000/api/expenses>
+```bash
+cd Project/backend
+npm install
+```
 
-Stop the server by pressing `Ctrl + C` in the terminal.
+Copy `.env.example` to `.env`.
 
-## Running the Final MERN Project
+PowerShell:
 
-The final installation and execution instructions will be added after the back end and front end are completed. The finished project will include separate commands for installing dependencies and running both development servers.
+```powershell
+Copy-Item .env.example .env
+```
 
-## Learning Diary
+Windows Command Prompt:
 
-Development progress, encountered problems, solutions and personal reflections are documented in [`Learning_Diary.md`](Learning_Diary.md).
+```bat
+copy .env.example .env
+```
 
-## Demonstration Video
+The local configuration is:
 
-The final project video will be linked in [`VIDEO_LINK.md`](VIDEO_LINK.md).
+```env
+PORT=5000
+MONGO_URI=mongodb://127.0.0.1:27017/expense_tracker_project
+CLIENT_URL=http://localhost:5173
+```
+
+Start the backend:
+
+```bash
+npm run dev
+```
+
+Test the API health endpoint:
+
+```text
+http://localhost:5000/api/health
+```
+
+### 3. Configure and install the frontend
+
+Open a second terminal:
+
+```bash
+cd Project/frontend
+npm install
+```
+
+Copy `.env.example` to `.env`. It should contain:
+
+```env
+VITE_API_URL=http://localhost:5000/api
+```
+
+Start the frontend:
+
+```bash
+npm run dev
+```
+
+Open:
+
+```text
+http://localhost:5173
+```
+
+## API Endpoints
+
+| Method | Endpoint | Purpose |
+|---|---|---|
+| GET | `/api/health` | Verify the backend is running |
+| GET | `/api/transactions` | List all transactions |
+| GET | `/api/transactions?type=expense` | Filter transactions by type |
+| GET | `/api/transactions/:id` | Get one transaction |
+| POST | `/api/transactions` | Create a transaction |
+| PUT | `/api/transactions/:id` | Update a transaction |
+| DELETE | `/api/transactions/:id` | Delete a transaction |
+
+## Example Transaction
+
+```json
+{
+  "description": "Grocery shopping",
+  "amount": 45,
+  "type": "expense",
+  "category": "Food",
+  "date": "2026-07-16",
+  "note": "Weekly groceries and household supplies"
+}
+```
+
+## Testing and Production Build
+
+Run the frontend code-quality check:
+
+```bash
+cd Project/frontend
+npm run lint
+```
+
+Create a production build:
+
+```bash
+npm run build
+```
+
+The application was manually tested for:
+
+- MongoDB connection and persistent storage
+- GET, POST, PUT and DELETE operations
+- API and Mongoose validation
+- React form validation
+- Financial summary calculations
+- Filtering and routing
+- Success, loading, 404 and validation messages
+- Production build completion
+
+## Coursework
+
+The `Coursework` directory contains separate exercises completed for Node.js, MongoDB, Express.js and React. Screenshots in `Evidence` document the environment setup, commands, API responses, database records and application behaviour.
+
+## Documentation
+
+- [Learning Diary](Learning_Diary.md)
+- [Project Report](PROJECT_REPORT.md)
+- [Demonstration Video](VIDEO_LINK.md)
 
 ## Author
 
 Yu-Chi Huang — Student number 3775879
+
